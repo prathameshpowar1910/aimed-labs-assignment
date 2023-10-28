@@ -11,18 +11,18 @@ const Title = styled.h1`
 `;
 
 const LoginImg = styled.img`
-  width: 30%;
+  width: 25%;
   height: 60%;
-  box-sizing: border-box;
   margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position:absolute;
   float: left;
-  object-fit: cover;
-  @media (max-width: 900px) {
+  top:17%;
+  left:7%;
+  transition: all 0.3s;
+  @media (max-width: 1007px) {
     display: none;
+    width: 100%;
+    left: 0;
   }
 `;
 
@@ -34,10 +34,11 @@ const LoginContainer = styled.div`
   position: relative;
   float: right;
   height: 93vh;
-  width: 50%;
+  width: 56%;
   box-sizing: border-box;
   margin: 20px;
-  @media (max-width: 900px) {
+  transition: all 0.6s ease-in-out;
+  @media (max-width: 1007px) {
     width: 100%;
   }
 `;
@@ -54,7 +55,7 @@ const LoginForm = styled.form`
   width: 100%;
   margin-top: 0;
   box-sizing: border-box;
-  @media (max-width: 900px) {
+  @media (max-width: 1007px) {
     margin-left: 38px;
     width: 100%;
   }
@@ -69,7 +70,7 @@ const InputField = styled.input`
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 900px) {
+  @media (max-width: 1007px) {
     width: 90%;
   }
 `;
@@ -102,6 +103,13 @@ const RegisterLabel = styled(InputLabel)`
   color: black;
 `;
 
+const ForgotPasswordLabel = styled(InputLabel)`
+    margin-top: 20px;
+color: #f78719;
+font-size:18px;
+font-weight:400;
+`;
+
 const SubmitButton = styled.button`
   align-self: center;
   width: 70%;
@@ -109,18 +117,14 @@ const SubmitButton = styled.button`
   margin-top: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #0077ff;
+  background-color: #1575A7;
   color: #fff;
   font-size: 18px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  &:hover {
-    background-color: #0066cc;
-  }
-
   @media (max-width: 900px) {
-    width: 100%;
+    width: 70%;
   }
 `;
 
@@ -181,6 +185,7 @@ const Login = () => {
               onChange={handleRemembermeChange}
             />
             <CheckboxLabel htmlFor="rememberme">Remember me</CheckboxLabel>
+            <ForgotPasswordLabel>Forgot Password?</ForgotPasswordLabel>
           </CheckboxContainer>
           <CheckboxContainer>
             <input
@@ -195,7 +200,7 @@ const Login = () => {
           </CheckboxContainer>
           <SubmitButton type="submit">Login</SubmitButton>
           <RegisterLabel>
-            Don&apos;t have an account? <LinkLabel>Register Here</LinkLabel>{" "}
+            Don&apos;t have an account? <LinkLabel>Register Here</LinkLabel>
           </RegisterLabel>
         </LoginForm>
       </LoginContainer>
