@@ -3,7 +3,6 @@ import styled from "styled-components";
 import imgsvg from "/img.svg";
 import "../assets/styles/Login.css";
 
-
 const Title = styled.h1`
   font-size: 48px;
   color: #222;
@@ -14,10 +13,10 @@ const LoginImg = styled.img`
   width: 25%;
   height: 60%;
   margin: 20px;
-  position:absolute;
+  position: absolute;
   float: left;
-  top:17%;
-  left:7%;
+  top: 17%;
+  left: 7%;
   transition: all 0.3s;
   @media (max-width: 1007px) {
     display: none;
@@ -75,6 +74,11 @@ const InputField = styled.input`
   }
 `;
 
+const RememberMeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const CheckboxContainer = styled.div`
   text-align: left;
   margin-bottom: 10px;
@@ -103,21 +107,21 @@ const RegisterLabel = styled(InputLabel)`
   color: black;
 `;
 
-const ForgotPasswordLabel = styled(InputLabel)`
-    margin-top: 20px;
-color: #f78719;
-font-size:18px;
-font-weight:400;
+const ForgotPasswordLabel = styled(LinkLabel)`
+text-decoration: none;
+  color: #f78719;
+  font-size: 18px;
+  font-weight: 400;
 `;
 
 const SubmitButton = styled.button`
   align-self: center;
   width: 70%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 30px;
   border: none;
   border-radius: 5px;
-  background-color: #1575A7;
+  background-color: #1575a7;
   color: #fff;
   font-size: 18px;
   cursor: pointer;
@@ -166,17 +170,18 @@ const Login = () => {
           <InputLabel htmlFor="loginId">Login ID</InputLabel>
           <InputField
             type="text"
-            placeholder="Login ID"
+            placeholder="Enter Login ID"
             value={loginId}
             onChange={handleLoginIdChange}
           />
           <InputLabel htmlFor="password">Password</InputLabel>
           <InputField
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={password}
             onChange={handlePasswordChange}
           />
+          <RememberMeContainer>
           <CheckboxContainer>
             <input
               type="checkbox"
@@ -185,8 +190,9 @@ const Login = () => {
               onChange={handleRemembermeChange}
             />
             <CheckboxLabel htmlFor="rememberme">Remember me</CheckboxLabel>
-            <ForgotPasswordLabel>Forgot Password?</ForgotPasswordLabel>
           </CheckboxContainer>
+          <ForgotPasswordLabel>Change Password</ForgotPasswordLabel>
+          </RememberMeContainer>
           <CheckboxContainer>
             <input
               type="checkbox"
