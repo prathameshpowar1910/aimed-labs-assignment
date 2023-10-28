@@ -78,7 +78,7 @@ const InputField = styled.input`
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   padding-right: 30px;
   @media (max-width: 1007px) {
-    width: 90%;
+    width: 100%;
   }
 `;
 
