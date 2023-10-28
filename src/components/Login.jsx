@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import imgsvg from "/img.svg";
-import "./Login.css";
+import "../assets/styles/Login.css";
 
 
 const Title = styled.h1`
