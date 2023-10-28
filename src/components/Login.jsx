@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import imgsvg from "/img.svg";
 import "../assets/styles/Login.css";
+import hideimg from "/hide.png";
+import showimg from "/show.png";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -60,6 +62,12 @@ const LoginForm = styled.form`
   }
 `;
 
+const InputFieldContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+
 const InputField = styled.input`
   font-size: 18px;
   width: 100%;
@@ -68,7 +76,7 @@ const InputField = styled.input`
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-
+  padding-right: 30px;
   @media (max-width: 1007px) {
     width: 90%;
   }
@@ -108,7 +116,7 @@ const RegisterLabel = styled(InputLabel)`
 `;
 
 const ForgotPasswordLabel = styled(LinkLabel)`
-text-decoration: none;
+  text-decoration: none;
   color: #f78719;
   font-size: 18px;
   font-weight: 400;
@@ -132,12 +140,31 @@ const SubmitButton = styled.button`
   }
 `;
 
+const PasswordVisibilityToggle = styled.i`
+  position: absolute;
+  top: 45%;
+  right: -4%;
+  cursor: pointer;
+`;
+
+const ShowIcon = () => {
+  return <img width={"24px"} src={showimg} alt="showimg" />;
+};
+
+const HideIcon = () => {
+  return <img width={"24px"} src={hideimg} alt="hideimg" />;
+};
+
 const Login = () => {
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [rememberme, setRememberme] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleLoginIdChange = (event) => {
     setLoginId(event.target.value);
   };
@@ -174,24 +201,29 @@ const Login = () => {
             value={loginId}
             onChange={handleLoginIdChange}
           />
-          <InputLabel htmlFor="password">Password</InputLabel>
-          <InputField
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <RememberMeContainer>
-          <CheckboxContainer>
-            <input
-              type="checkbox"
-              id="rememberme"
-              checked={rememberme}
-              onChange={handleRemembermeChange}
+          <InputFieldContainer>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <InputField
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Password"
+              value={password}
+              onChange={handlePasswordChange}
             />
-            <CheckboxLabel htmlFor="rememberme">Remember me</CheckboxLabel>
-          </CheckboxContainer>
-          <ForgotPasswordLabel>Change Password</ForgotPasswordLabel>
+            <PasswordVisibilityToggle onClick={handleTogglePassword}>
+              {showPassword ? <HideIcon /> : <ShowIcon />}
+            </PasswordVisibilityToggle>
+          </InputFieldContainer>
+          <RememberMeContainer>
+            <CheckboxContainer>
+              <input
+                type="checkbox"
+                id="rememberme"
+                checked={rememberme}
+                onChange={handleRemembermeChange}
+              />
+              <CheckboxLabel htmlFor="rememberme">Remember me</CheckboxLabel>
+            </CheckboxContainer>
+            <ForgotPasswordLabel>Change Password</ForgotPasswordLabel>
           </RememberMeContainer>
           <CheckboxContainer>
             <input
